@@ -3,6 +3,7 @@ import Root from "./components/Root";
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import OnlineDetail from "./routes/OnlineDetail";
+import GithubConfirm from "./routes/GithubConfirm";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,15 @@ const router = createBrowserRouter([
       {
         path: "onlines/:onlinePk",
         element: <OnlineDetail />,
+      },
+      {
+        path: "social",
+        children: [
+          {
+            path: "github",
+            element: <GithubConfirm />,
+          },
+        ],
       },
     ],
   },

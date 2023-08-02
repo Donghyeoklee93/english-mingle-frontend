@@ -10,7 +10,13 @@ export default function SocialLogin() {
       </Text>
 
       <HStack pt={"2"}>
-        <Button w="100%" leftIcon={<FaGithub />} colorScheme={"telegram"}>
+        <Button
+          as="a"
+          href="https://github.com/login/oauth/authorize?client_id=442fd1bf01c98732b9ae&scope=read:user,user:email"
+          w="100%"
+          leftIcon={<FaGithub />}
+          colorScheme={"telegram"}
+        >
           Github
         </Button>
 
