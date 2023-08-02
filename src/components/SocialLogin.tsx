@@ -1,4 +1,5 @@
 import { FaComment, FaGithub, FaFacebook, FaWhatsapp } from "react-icons/fa";
+import { RiKakaoTalkFill } from "react-icons/ri";
 import { Box, Button, Divider, HStack, Text, VStack } from "@chakra-ui/react";
 
 export default function SocialLogin() {
@@ -13,12 +14,12 @@ export default function SocialLogin() {
           Github
         </Button>
 
-        <Button w="100%" leftIcon={<FaWhatsapp />} colorScheme={"whatsapp"}>
-          WhatsApp
+        <Button w="100%" leftIcon={<RiKakaoTalkFill />} colorScheme={"yellow"}>
+          KakaoTalk
         </Button>
 
-        <Button w="100%" leftIcon={<FaFacebook />} colorScheme={"facebook"}>
-          Facebook
+        <Button w="100%" leftIcon={<FaWhatsapp />} colorScheme={"whatsapp"}>
+          WhatsApp
         </Button>
       </HStack>
 

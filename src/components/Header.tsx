@@ -1,5 +1,6 @@
 import { FaSun, FaWaze, FaMoon, FaArrowAltCircleDown } from "react-icons/fa";
 import {
+  Avatar,
   Box,
   Button,
   HStack,
@@ -12,20 +13,25 @@ import {
   useColorMode,
   useColorModeValue,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import { MdBuild, MdCall } from "react-icons/md";
 import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import SignUpModal from "./SignUpModal";
+import useUser from "../lib/useUser";
+import { logOut } from "../api";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Header() {
-  const imagePath = "/path/to/your/image.png";
-
+  // const imagePath = "/path/to/your/image.png";
+  const { userLoading, isLoggedIn, user } = useUser();
   const {
     isOpen: isLoginOpen,
     onClose: onLoginClose,
     onOpen: onLoginOpen,
   } = useDisclosure();
+
   const {
     isOpen: isSignUpOpen,
     onClose: onSignUpClose,
@@ -35,6 +41,26 @@ export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
   const logoColor = useColorModeValue("red.500", "red.200");
   const Icon = useColorModeValue(FaMoon, FaSun);
+  const toast = useToast();
+  const queryClient = useQueryClient();
+  const onLogOut = async () => {
+    // mutation.mutate();
+    // const response = await logOut();
+    const toastId = toast({
+      title: "Login out...",
+      description: "Sad to see you go...",
+      status: "loading",
+      duration: 10000,
+      position: "bottom-right",
+    });
+    await logOut();
+    queryClient.refetchQueries(["me"]);
+    toast.update(toastId, {
+      status: "success",
+      title: "Done!",
+      description: "See you later!",
+    });
+  };
 
   return (
     <Stack
@@ -71,8 +97,28 @@ export default function Header() {
           </MenuList>
         </Menu>
 
-        <Button onClick={onLoginOpen}>Log in</Button>
-        <Button onClick={onSignUpOpen}>Sign up</Button>
+        {!userLoading ? (
+          !isLoggedIn ? (
+            <>
+              <Button onClick={onLoginOpen}>Log in</Button>
+              <Button onClick={onSignUpOpen}>Sign up</Button>
+            </>
+          ) : (
+            <Menu>
+              <MenuButton>
+                <Avatar name={user?.name} src={user?.avatar} size={"md"} />
+              </MenuButton>
+              <MenuList>
+                {/* {user?.is_host ? (
+                  <Link to="/rooms/upload">
+                    <MenuItem>Upload room</MenuItem>
+                  </Link>
+                ) : null} */}
+                <MenuItem onClick={onLogOut}>Log out</MenuItem>
+              </MenuList>
+            </Menu>
+          )
+        ) : null}
 
         <Button rightIcon={<MdCall />} colorScheme="blue" variant="outline">
           Call us

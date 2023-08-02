@@ -16,9 +16,14 @@ export interface IPhoto {
 }
 
 export interface IUser {
-  name: string;
-  avatar: string;
+  last_login: string;
   username: string;
+  email: string;
+  date_joined: string;
+  avatar: string;
+  name: string;
+  is_host: boolean;
+  gender: string;
 }
 
 export interface IOnlineDetail {
