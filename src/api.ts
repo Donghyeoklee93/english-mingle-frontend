@@ -2,6 +2,8 @@ import Cookie from "js-cookie";
 import { QueryFunctionContext } from "@tanstack/react-query";
 import axios from "axios";
 
+import { formatDate } from "./lib/utils";
+
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/v1/",
   withCredentials: true,
@@ -110,3 +112,30 @@ export const uploadOnline = (variables: IUploadOnlineVariables) =>
       },
     })
     .then((response) => response.data);
+
+export const getUploadURL = () =>
+  instance
+    .post(`medias/photos/get-url`, null, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((response) => response.data);
+
+type CheckBookingQueryKey = [string, string?, Date[]?];
+
+export const checkBooking = ({
+  queryKey,
+}: QueryFunctionContext<CheckBookingQueryKey>) => {
+  const [_, onlinePk, dates] = queryKey;
+  if (dates) {
+    const [firstDate, secondDate] = dates;
+    const timeFrom = formatDate(firstDate);
+    const timeTo = formatDate(secondDate);
+    return instance
+      .get(
+        `onlines/${onlinePk}/bookings/check?time_from=${timeFrom}&time_to=${timeTo}`
+      )
+      .then((response) => response.data);
+  }
+};

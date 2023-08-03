@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getOnline, getOnlineReviews } from "../api";
+import { checkBooking, getOnline, getOnlineReviews } from "../api";
 import { IOnlineDetail, IReview } from "../types";
 import {
   Avatar,
   Box,
+  Button,
   Container,
   Grid,
   GridItem,
@@ -17,6 +18,11 @@ import {
   background,
 } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import "../calendar.css";
 
 export default function OnlineDetail() {
   const { onlinePk } = useParams();
@@ -28,6 +34,31 @@ export default function OnlineDetail() {
     [`onlines`, onlinePk, `reviews`],
     getOnlineReviews
   );
+
+  const [dates, setDates] = useState<Date[] | undefined>();
+  // console.log(checkBookingData, isCheckingBooking);
+
+  const handleDateChange = (value: any) => {
+    setDates(value);
+  };
+  const { data: checkBookingData, isLoading: isCheckingBooking } = useQuery(
+    ["check", onlinePk, dates],
+    checkBooking,
+    {
+      cacheTime: 0,
+      enabled: dates !== undefined,
+    }
+  );
+
+  // useEffect(() => {
+  //   if (dates) {
+  //     const [firstDate, secondDate] = dates;
+  //     const [timeFrom] = firstDate.toJSON().split("T");
+  //     const [timeto] = secondDate.toJSON().split("T");
+  //     console.log(timeFrom, timeto);
+  //   }
+  // }, [dates]);
+
   return (
     <Box
       pb={40}
@@ -37,6 +68,9 @@ export default function OnlineDetail() {
         lg: 40,
       }}
     >
+      <Helmet>
+        <title>{data ? data.name : "Loading..."}</title>
+      </Helmet>
       <Skeleton height={"43px"} width="25%" isLoaded={!isLoading}>
         <Heading>{data?.description}</Heading>
       </Skeleton>
@@ -110,7 +144,7 @@ export default function OnlineDetail() {
         </VStack>
       </Box>
 
-      <Box bgColor={"blue.300"}>
+      <Box height={"50vh"} bgColor={"blue.300"}>
         <Grid
           gap={10}
           templateColumns={"repeat(auto-fill, minmax(300px, 1fr))"}
@@ -135,6 +169,47 @@ export default function OnlineDetail() {
             </VStack>
           ))}
         </Grid>
+      </Box>
+
+      {/* calendar */}
+      <Box
+        bgColor={"purple.50"}
+        mt={"50px"}
+        height={"100px"}
+        width={"100%"}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <VStack>
+          <Heading>Booking</Heading>
+          <Heading mb={5} fontSize={"2xl"}></Heading>
+        </VStack>
+      </Box>
+      <Box pt={10}>
+        <Calendar
+          goToRangeStartOnSelect
+          onChange={handleDateChange}
+          // showDoubleView
+          prev2Label={null}
+          next2Label={null}
+          minDetail="year"
+          minDate={new Date()}
+          maxDate={new Date(Date.now() + 60 * 60 * 24 * 7 * 4 * 6 * 1000)}
+          selectRange
+        />
+        <Button
+          disabled={!checkBookingData?.ok}
+          isLoading={isCheckingBooking && dates !== undefined}
+          my={5}
+          w="100%"
+          colorScheme={"red"}
+        >
+          Make booking
+        </Button>
+        {!isCheckingBooking && !checkBookingData?.ok ? (
+          <Text color="red.500">Can't book on those dates, sorry.</Text>
+        ) : null}
       </Box>
     </Box>
   );
