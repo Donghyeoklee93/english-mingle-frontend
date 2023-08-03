@@ -2,7 +2,7 @@ import { Grid } from "@chakra-ui/react";
 import Online from "../components/Online";
 import OnlineSkeleton from "../components/OnlineSkeleton";
 import { useQuery } from "@tanstack/react-query";
-import { getOnlines } from "../api";
+import { getOnlines, getOfflines } from "../api";
 import { IOnline } from "../types";
 
 export default function Home() {

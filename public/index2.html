@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Engle Mingle</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EngleMigle" />
+    <meta property="og:title" content="EngleMigle" />
+
+    <meta property="twitter:card" content="ENGLISH" />
+    <meta property="twitter:site" content="EngleMigle" />
+    <meta property="twitter:title" content="EngleMigle" />
+
+    <link rel="ico" href="./favicon.png" />
+    <link
+      href="
+  https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css
+  "
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- GSAP & ScrollToPlugin -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"
+      integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"
+      integrity="sha512-v/m68W+vaGN/6igoyFpd4GlQzu0jx9/n5gr2PKq5vif+RObyGKHse384YHrOULaxZ810XhlHUrmB3U8UnPB19Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- SWIPER -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+
+    <!-- ScrollMagic -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+      integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script defer src="./js/youtube.js"></script>
+    <script defer src="./js/main.js"></script>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="inner">
+        <a href="javascript:void(0)" class="logo">
+          <img src="./images/EngleMigle.png" alt="ENGLIE_MINGLE" />
+        </a>
+
+        <div class="sub-menu">
+          <ul class="menu"></ul>
+          <div class="search">
+            <input type="text" />
+            <div class="material-icons">search</div>
+          </div>
+        </div>
+
+        <ul class="main-menu">
+          <li class="item"></li>
+
+          <li class="item">
+            <a href="http://127.0.0.1:3000/">
+              <div class="item__name">ONLINE CLASS</div>
+            </a>
+            <div class="item__contents">
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4 class="new">ONLINE CLASS</h4>
+                  <p>Take classes regardless of time and place</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="item">
+            <a href="http://127.0.0.1:3000/">
+              <div class="item__name">OFFLINE CLASS</div>
+            </a>
+
+            <div class="item__contents">
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4 class="new">OFFLINE CLASS</h4>
+                  <p>Study intensively with the tutor in the field</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="item">
+            <a href="http://127.0.0.1:3000/">
+              <div class="item__name">ENGLISH CHALLENGE</div>
+            </a>
+
+            <div class="item__contents">
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4 class="new">ENGLISH CHALLENGE</h4>
+                  <p>Let's have fun studying English through the challenge</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="badges">
+        <div class="badge">
+          <img src="./images/badge1.png" alt="badge" />
+        </div>
+        <div class="badge">
+          <img src="./images/badge2.png" alt="badge" />
+        </div>
+      </div>
+    </header>
+
+    <!-- VISUAL -->
+    <section class="visual">
+      <div class="inner">
+        <div class="title fade-in">
+          <img src="./images/visual_title.png" alt="ENGLE MIGLE TITLE" />
+          <a href="javascript:void(0)" class="btn btn--brown">Details</a>
+        </div>
+        <div class="fade-in">
+          <img
+            src="./images/visual_model1.png"
+            alt="MODEL1"
+            class="model1 image"
+          />
+        </div>
+        <div class="fade-in">
+          <img
+            src="./images/visual_model2.png"
+            alt="MODEL2"
+            class="model2 image"
+          />
+        </div>
+        <div class="fade-in">
+          <img src="./images/visual_model3.png" alt="MODEL3" class="model4" />
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTICE -->
+    <section class="notice">
+      <div class="notice-line">
+        <div class="bg-left"></div>
+        <div class="bg-right"></div>
+        <div class="inner">
+          <div class="inner__left">
+            <h2>BOARD</h2>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a href="javascript:void(0)"
+                    >New website features coming soon!</a
+                  >
+                </div>
+                <div class="swiper-slide">
+                  <a href="javascript:void(0)"
+                    >Join our exclusive online community today!</a
+                  >
+                </div>
+                <div class="swiper-slide">
+                  <a href="javascript:void(0)"
+                    >Limited time offer - don't miss out!</a
+                  >
+                </div>
+                <div class="swiper-slide">
+                  <a href="javascript:void(0)"
+                    >Stay tuned for upcoming events and promotions!</a
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="javascript:void(0)" class="notice-line__more">
+              <div class="material-icons">add_circle</div>
+            </a>
+          </div>
+          <div class="inner__right">
+            <h2>Engle Mingle Promotion</h2>
+            <div class="toggle-promotion">
+              <div class="material-icons">upload</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="promotion">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./images/promotion_slide1.png" alt="PROMOTION PHOTO1" />
+              <a href="javascript:void(0)" class="btn">Details</a>
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/promotion_slide2.png" alt="PROMOTION PHOTO2" />
+              <a href="javascript:void(0)" class="btn">Details</a>
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/promotion_slide3.png" alt="PROMOTION PHOTO3" />
+              <a href="javascript:void(0)" class="btn">Details</a>
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/promotion_slide4.png" alt="PROMOTION PHOTO4" />
+              <a href="javascript:void(0)" class="btn">Details</a>
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/promotion_slide5.png" alt="PROMOTION PHOTO5" />
+              <a href="javascript:void(0)" class="btn">Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-prev">
+          <div class="material-icons">arrow_back</div>
+        </div>
+        <div class="swiper-next">
+          <div class="material-icons">arrow_forward</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YOUTUBE VIDEO -->
+    <section class="youtube">
+      <div class="youtube__area">
+        <div id="player"></div>
+      </div>
+      <div class="youtube__cover"></div>
+      <div class="inner"></div>
+    </section>
+
+    <!-- ONLINE -->
+    <section class="service-product scroll-spy">
+      <div class="inner">
+        <img
+          src="./images/service1.png"
+          alt=""
+          class="product back-to-position to-right delay-0"
+        />
+
+        <div class="text-group">
+          <img
+            src="./images/service1_text1.png"
+            alt=""
+            class="title back-to-position to-left delay-1"
+          />
+          <img
+            src="./images/service1_text2.png"
+            alt=""
+            class="description back-to-position to-left delay-2"
+          />
+          <div class="more back-to-position to-left delay-3">
+            <a href="javascript:void(0)" class="btn">Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFLINE -->
+    <section class="offline-service scroll-spy">
+      <div class="inner">
+        <div class="text-group">
+          <img
+            src="./images/service2_text1.png"
+            alt=""
+            class="description back-to-position to-right delay-1"
+          />
+          <div class="more back-to-position to-right delay-2">
+            <a href="javascript:void(0)" class="btn btn--gold">Details</a>
+          </div>
+        </div>
+
+        <img
+          src="./images/service2.png"
+          alt=""
+          class="product back-to-position to-left delay-3"
+        />
+      </div>
+    </section>
+
+    <!-- CHALLENGE -->
+    <section class="challenge-service scroll-spy">
+      <div class="inner">
+        <div class="text-group">
+          <img
+            src="./images/service3.png"
+            alt=""
+            class="title back-to-position to-right delay-0"
+          />
+          <img
+            src="./images/service3_text1.png"
+            alt=""
+            class="description back-to-position to-right delay-1"
+          />
+          <div class="more back-to-position to-right delay-2">
+            <a href="javascript:void(0)" class="btn">Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO ANIMATION -->
+    <section class="logo-medal">
+      <div class="inner">
+        <div class="medal">
+          <div class="front">
+            <img src="./images/medal_front.png" alt="" />
+          </div>
+          <div class="back">
+            <img src="./images/medal_back.png" alt="" />
+            <a href="javascript:void(0)" class="btn"> Details </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRIAL CLASS INFROMATION -->
+    <section class="trial-class scroll-spy">
+      <div class="inner">
+        <img src="./images/trial_texture1.png" alt="" class="texture1" />
+        <img src="./images/trial_texture2.png" alt="" class="texture2" />
+        <img
+          src="./images/trial_picture1.png"
+          alt=""
+          class="picture picture1 back-to-position to-right delay-0"
+        />
+        <img
+          src="./images/trial_picture2.png"
+          alt=""
+          class="picture picture2 back-to-position to-right delay-1"
+        />
+
+        <div class="text-group">
+          <img
+            src="./images/trial_text1.png"
+            alt=""
+            class="title back-to-position to-left delay-0"
+          />
+          <img
+            src="./images/trial_text2.png"
+            alt=""
+            class="description back-to-position to-left delay-1"
+          />
+          <div class="more back-to-position to-left delay-2">
+            <a href="javascript:void(0)" class="btn">Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="inner">
+        <ul class="menu">
+          <li><a href="javascript:void(0)" class="green">User Consent</a></li>
+          <li><a href="javascript:void(0)">Data security</a></li>
+          <li><a href="javascript:void(0)">Privacy</a></li>
+          <li>
+            <a href="javascript:void(0)">Data management and usage rights</a>
+          </li>
+          <li><a href="javascript:void(0)">Data transfer</a></li>
+        </ul>
+
+        <div class="btn-group">
+          <a href="javascript:void(0)" class="btn btn--white">CONTACT</a>
+          <a href="javascript:void(0)" class="btn btn--white">BUSINESS MAIL</a>
+          <a href="javascript:void(0)" class="btn btn--white">HELP</a>
+        </div>
+
+        <div class="info">
+          <span>ENGLE MIGLE COMPANY</span>
+          <span>TEL : 00) 0000-0000 / FAX : 00) 0000-0000</span>
+          <span>CEO : DONGHYEOK LEE</span>
+        </div>
+
+        <p class="copyright">
+          &copy; <span class="this-year"></span> ENGLE MINGLE COMPANY. All
+          Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- TO TOP -->
+    <div id="to-top">
+      <div class="material-icons">arrow_upward</div>
+    </div>
+  </body>
+</html>

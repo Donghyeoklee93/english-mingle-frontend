@@ -78,11 +78,28 @@ export default function Header() {
       }}
       borderBottomWidth={1}
     >
-      <Box color={logoColor}>
+      {/* <HStack spacing={2}>
+        <Box color={logoColor}>
+          <Link to={"/"}>
+            <FaWaze size={"48"} />
+          </Link>
+        </Box>
+      </HStack> */}
+
+      <HStack spacing={2}>
         <Link to={"/"}>
-          <FaWaze size={"48"} />
+          <Button>ONLINE</Button>
         </Link>
-      </Box>
+
+        <Link to={"/offlines"}>
+          <Button>OFFLINE</Button>
+        </Link>
+
+        <Link to={"/challenges"}>
+          <Button>CHALLENGE</Button>
+        </Link>
+      </HStack>
+
       <HStack spacing={2}>
         <Menu>
           <MenuButton as={Button} rightIcon={<FaArrowAltCircleDown />}>

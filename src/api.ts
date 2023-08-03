@@ -9,6 +9,7 @@ const instance = axios.create({
   withCredentials: true,
 });
 
+//online
 export const getOnlines = () =>
   instance.get("onlines/").then((response) => response.data);
 
@@ -21,6 +22,22 @@ export const getOnlineReviews = ({ queryKey }: QueryFunctionContext) => {
   const [_, onlinePk] = queryKey;
   return instance
     .get(`onlines/${onlinePk}/reviews`)
+    .then((response) => response.data);
+};
+
+//offline
+export const getOfflines = () =>
+  instance.get("offlines/").then((response) => response.data);
+
+export const getOffline = ({ queryKey }: QueryFunctionContext) => {
+  const [_, offlinePk] = queryKey;
+  return instance.get(`onlines/${offlinePk}`).then((response) => response.data);
+};
+
+export const getOfflineReviews = ({ queryKey }: QueryFunctionContext) => {
+  const [_, offlinePk] = queryKey;
+  return instance
+    .get(`offlines/${offlinePk}/reviews`)
     .then((response) => response.data);
 };
 
@@ -89,7 +106,18 @@ export const usernameLogIn = ({
     }
   );
 
+//online
 export interface IUploadOnlineVariables {
+  name: string;
+  price: number;
+  description: string;
+  kind: string;
+  subjects: number[];
+  level: number;
+}
+
+//offline
+export interface IUploadOfflineVariables {
   name: string;
   price: number;
   description: string;
@@ -104,9 +132,20 @@ export const getSubjects = () =>
 export const getLevels = () =>
   instance.get(`levels/`).then((response) => response.data);
 
+//online
 export const uploadOnline = (variables: IUploadOnlineVariables) =>
   instance
     .post(`onlines/`, variables, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((response) => response.data);
+
+//offline
+export const uploadOffline = (variables: IUploadOfflineVariables) =>
+  instance
+    .post(`offlines/`, variables, {
       headers: {
         "X-CSRFToken": Cookie.get("csrftoken") || "",
       },
@@ -124,6 +163,7 @@ export const getUploadURL = () =>
 
 type CheckBookingQueryKey = [string, string?, Date[]?];
 
+//online
 export const checkBooking = ({
   queryKey,
 }: QueryFunctionContext<CheckBookingQueryKey>) => {
@@ -135,6 +175,23 @@ export const checkBooking = ({
     return instance
       .get(
         `onlines/${onlinePk}/bookings/check?time_from=${timeFrom}&time_to=${timeTo}`
+      )
+      .then((response) => response.data);
+  }
+};
+
+//offline
+export const checkBookingOffline = ({
+  queryKey,
+}: QueryFunctionContext<CheckBookingQueryKey>) => {
+  const [_, offlinePk, dates] = queryKey;
+  if (dates) {
+    const [firstDate, secondDate] = dates;
+    const timeFrom = formatDate(firstDate);
+    const timeTo = formatDate(secondDate);
+    return instance
+      .get(
+        `offlines/${offlinePk}/bookings/check?time_from=${timeFrom}&time_to=${timeTo}`
       )
       .then((response) => response.data);
   }

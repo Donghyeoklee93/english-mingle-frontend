@@ -22,6 +22,7 @@ const router = createBrowserRouter([
         path: "onlines/upload",
         element: <UploadOnline />,
       },
+
       {
         path: "onlines/:onlinePk",
         element: <OnlineDetail />,

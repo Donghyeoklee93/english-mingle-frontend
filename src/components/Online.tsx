@@ -36,6 +36,7 @@ export default function Online({
     event.preventDefault();
     navigate(`/onlines/${pk}/photos`);
   };
+
   return (
     <Link to={`/onlines/${pk}`}>
       <VStack alignItems={"flex-start"}>

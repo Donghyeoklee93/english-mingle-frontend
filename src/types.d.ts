@@ -1,4 +1,17 @@
+//online
 export interface IOnline {
+  pk: number;
+  name: string;
+  price: number;
+  description: string;
+  rating: number;
+  is_owner: boolean;
+  reviews_count: number;
+  photos: IPhoto[];
+}
+
+//offline
+export interface IOffline {
   pk: number;
   name: string;
   price: number;
@@ -32,6 +45,7 @@ export interface ILevel {
   kind: string;
 }
 
+//online
 export interface IOnlineDetail {
   id: number;
   tutor: IUser;
@@ -46,8 +60,28 @@ export interface IOnlineDetail {
   price: number;
   description: string;
   kind: string;
-  start: string;
-  end: string;
+  // start: string;
+  // end: string;
+  subjects: ISubject[];
+}
+
+//offline
+export interface IOfflineDetail {
+  id: number;
+  tutor: IUser;
+  level: ILevel[];
+  rating: number;
+  is_owner: boolean;
+  reviews_count: number;
+  photos: IPhoto[];
+  created_at: string;
+  updated_at: string;
+  name: string;
+  price: number;
+  description: string;
+  kind: string;
+  // start: string;
+  // end: string;
   subjects: ISubject[];
 }
 
