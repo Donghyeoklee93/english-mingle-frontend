@@ -5,6 +5,8 @@ import NotFound from "./routes/NotFound";
 import OnlineDetail from "./routes/OnlineDetail";
 import GithubConfirm from "./routes/GithubConfirm";
 import KakaoConfirm from "./routes/KakaoConfirm";
+import UploadOnline from "./routes/UploadOnline";
+import UploadPhotos from "./routes/UploadPhotos";
 
 const router = createBrowserRouter([
   {
@@ -17,9 +19,18 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "onlines/upload",
+        element: <UploadOnline />,
+      },
+      {
         path: "onlines/:onlinePk",
         element: <OnlineDetail />,
       },
+      {
+        path: "onlines/:onlinePk/photos",
+        element: <UploadPhotos />,
+      },
+
       {
         path: "social",
         children: [

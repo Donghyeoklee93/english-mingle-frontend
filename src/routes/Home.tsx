@@ -42,7 +42,8 @@ export default function Home() {
         <Online
           key={online.pk}
           pk={online.pk}
-          imageUrl={online.photos[0].file}
+          isOwner={online.is_owner}
+          imageUrl={online.photos[0]?.file}
           name={online.name}
           rating={online.rating}
           description={online.description}

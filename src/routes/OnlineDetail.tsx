@@ -73,7 +73,7 @@ export default function OnlineDetail() {
         {[0, 1, 2, 3].map((index) => (
           <GridItem overflow={"hidden"} key={index}>
             <Skeleton isLoaded={!isLoading} h="100%" w="100%">
-              {data?.photos && data.photos.length > 4 ? (
+              {data?.photos && data.photos.length > 0 ? (
                 <Image
                   objectFit={"cover"}
                   w="100%"

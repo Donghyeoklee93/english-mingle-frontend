@@ -86,3 +86,27 @@ export const usernameLogIn = ({
       },
     }
   );
+
+export interface IUploadOnlineVariables {
+  name: string;
+  price: number;
+  description: string;
+  kind: string;
+  subjects: number[];
+  level: number;
+}
+
+export const getSubjects = () =>
+  instance.get(`subjects/`).then((response) => response.data);
+
+export const getLevels = () =>
+  instance.get(`levels/`).then((response) => response.data);
+
+export const uploadOnline = (variables: IUploadOnlineVariables) =>
+  instance
+    .post(`onlines/`, variables, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((response) => response.data);

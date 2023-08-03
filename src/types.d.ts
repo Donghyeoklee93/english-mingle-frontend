@@ -26,10 +26,16 @@ export interface IUser {
   gender: string;
 }
 
+export interface ILevel {
+  pk: number;
+  name: string;
+  kind: string;
+}
+
 export interface IOnlineDetail {
   id: number;
   tutor: IUser;
-  level: string;
+  level: ILevel[];
   rating: number;
   is_owner: boolean;
   reviews_count: number;
@@ -42,10 +48,11 @@ export interface IOnlineDetail {
   kind: string;
   start: string;
   end: string;
-  subjects: Isubject[];
+  subjects: ISubject[];
 }
 
-export interface Isubject {
+export interface ISubject {
+  pk: number;
   name: string;
   description: string;
 }
