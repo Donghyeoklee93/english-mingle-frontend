@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { checkBooking, getOnline, getOnlineReviews } from "../api";
-import { IOnlineDetail, IReview } from "../types";
+import { checkBooking, getChallenge, getChallengeReviews } from "../api";
+import { IChallengeDetail, IReview } from "../types";
 import {
   Avatar,
   Box,
@@ -24,15 +24,15 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import "../calendar.css";
 
-export default function OnlineDetail() {
-  const { onlinePk } = useParams();
-  const { isLoading, data } = useQuery<IOnlineDetail>(
-    [`onlines`, onlinePk],
-    getOnline
+export default function ChallengeDetail() {
+  const { challengePk } = useParams();
+  const { isLoading, data } = useQuery<IChallengeDetail>(
+    [`challenges`, challengePk],
+    getChallenge
   );
   const { data: reviewsData } = useQuery<IReview[]>(
-    [`onlines`, onlinePk, `reviews`],
-    getOnlineReviews
+    [`challenges`, challengePk, `reviews`],
+    getChallengeReviews
   );
 
   const [dates, setDates] = useState<Date[] | undefined>();
@@ -41,7 +41,7 @@ export default function OnlineDetail() {
     setDates(value);
   };
   const { data: checkBookingData, isLoading: isCheckingBooking } = useQuery(
-    ["check", onlinePk, dates],
+    ["check", challengePk, dates],
     checkBooking,
     {
       cacheTime: 0,

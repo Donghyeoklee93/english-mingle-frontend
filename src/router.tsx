@@ -7,6 +7,14 @@ import GithubConfirm from "./routes/GithubConfirm";
 import KakaoConfirm from "./routes/KakaoConfirm";
 import UploadOnline from "./routes/UploadOnline";
 import UploadPhotos from "./routes/UploadPhotos";
+import HomeOfflines from "./routes/HomeOfflines";
+import UploadOfflinePhotos from "./routes/UploadOfflinePhotos";
+import UploadOffline from "./routes/UploadOffline";
+import OfflineDetail from "./routes/OfflineDetail";
+import HomeChallenges from "./routes/HomeChallenges";
+import UploadChallenge from "./routes/UploadChallenge";
+import ChallengeDetail from "./routes/ChallengeDetail";
+import UploadChallengePhotos from "./routes/UploadChallengePhotos";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +22,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <NotFound />,
     children: [
+      //online
       {
         path: "",
         element: <Home />,
@@ -30,6 +39,44 @@ const router = createBrowserRouter([
       {
         path: "onlines/:onlinePk/photos",
         element: <UploadPhotos />,
+      },
+
+      //offline
+      {
+        path: "offlines",
+        element: <HomeOfflines />,
+      },
+      {
+        path: "offlines/upload",
+        element: <UploadOffline />,
+      },
+
+      {
+        path: "offlines/:offlinePk",
+        element: <OfflineDetail />,
+      },
+      {
+        path: "offlines/:offlinePk/photos",
+        element: <UploadOfflinePhotos />,
+      },
+
+      //challenge
+      {
+        path: "challenges",
+        element: <HomeChallenges />,
+      },
+      {
+        path: "challenges/upload",
+        element: <UploadChallenge />,
+      },
+
+      {
+        path: "challenges/:challengePk",
+        element: <ChallengeDetail />,
+      },
+      {
+        path: "challenges/:challengePk/photos",
+        element: <UploadChallengePhotos />,
       },
 
       {

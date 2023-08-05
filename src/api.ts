@@ -1,5 +1,9 @@
 import Cookie from "js-cookie";
-import { QueryFunctionContext } from "@tanstack/react-query";
+import {
+  MutationFunction,
+  QueryFunctionContext,
+  QueryKey,
+} from "@tanstack/react-query";
 import axios from "axios";
 
 import { formatDate } from "./lib/utils";
@@ -31,13 +35,35 @@ export const getOfflines = () =>
 
 export const getOffline = ({ queryKey }: QueryFunctionContext) => {
   const [_, offlinePk] = queryKey;
-  return instance.get(`onlines/${offlinePk}`).then((response) => response.data);
+  //에러발생부분
+  return instance
+    .get(`offlines/${offlinePk}`)
+    .then((response) => response.data);
 };
 
 export const getOfflineReviews = ({ queryKey }: QueryFunctionContext) => {
   const [_, offlinePk] = queryKey;
   return instance
     .get(`offlines/${offlinePk}/reviews`)
+    .then((response) => response.data);
+};
+
+//challenge
+export const getChallenges = () =>
+  instance.get("challenges/").then((response) => response.data);
+
+export const getChallenge = ({ queryKey }: QueryFunctionContext) => {
+  const [_, challengePk] = queryKey;
+  //에러발생부분
+  return instance
+    .get(`challenges/${challengePk}`)
+    .then((response) => response.data);
+};
+
+export const getChallengeReviews = ({ queryKey }: QueryFunctionContext) => {
+  const [_, challengePk] = queryKey;
+  return instance
+    .get(`challenges/${challengePk}/reviews`)
     .then((response) => response.data);
 };
 
@@ -162,6 +188,18 @@ export interface IUploadOfflineVariables {
   level: number;
 }
 
+//challenge
+export interface IUploadChallengeVariables {
+  name: string;
+  price: number;
+  description: string;
+  kind: string;
+  subjects: number[];
+  level: number;
+  start: String;
+  end: String;
+}
+
 export const getSubjects = () =>
   instance.get(`subjects/`).then((response) => response.data);
 
@@ -182,6 +220,16 @@ export const uploadOnline = (variables: IUploadOnlineVariables) =>
 export const uploadOffline = (variables: IUploadOfflineVariables) =>
   instance
     .post(`offlines/`, variables, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((response) => response.data);
+
+//challenge
+export const uploadChallenge = (variables: IUploadChallengeVariables) =>
+  instance
+    .post(`challenges/`, variables, {
       headers: {
         "X-CSRFToken": Cookie.get("csrftoken") || "",
       },

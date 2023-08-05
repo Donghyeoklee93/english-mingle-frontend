@@ -24,10 +24,10 @@ import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
 import {
   getSubjects,
   getLevels,
-  IUploadOnlineVariables,
-  uploadOnline,
+  IUploadOfflineVariables,
+  uploadOffline,
 } from "../api";
-import { ILevel, IOnlineDetail, ISubject } from "../types";
+import { ILevel, IOfflineDetail, ISubject } from "../types";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -40,18 +40,18 @@ import { useNavigate } from "react-router-dom";
 //   level: number;
 // }
 
-export default function UploadOnline() {
-  const { register, handleSubmit } = useForm<IUploadOnlineVariables>();
+export default function UploadOffline() {
+  const { register, handleSubmit } = useForm<IUploadOfflineVariables>();
   const toast = useToast();
   const navigate = useNavigate();
-  const mutation = useMutation(uploadOnline, {
-    onSuccess: (data: IOnlineDetail) => {
+  const mutation = useMutation(uploadOffline, {
+    onSuccess: (data: IOfflineDetail) => {
       toast({
         status: "success",
         title: "Room created",
         position: "bottom-right",
       });
-      navigate(`/onlines/${data.id}`);
+      navigate(`/offlines/${data.id}`);
     },
   });
   const { data: subjects, isLoading: subjectsLoading } = useQuery<ISubject[]>(
@@ -63,7 +63,7 @@ export default function UploadOnline() {
     getLevels
   );
   useHostOnlyPage();
-  const onSubmit = (data: IUploadOnlineVariables) => {
+  const onSubmit = (data: IUploadOfflineVariables) => {
     mutation.mutate(data);
   };
   return (
@@ -109,21 +109,6 @@ export default function UploadOnline() {
             <FormControl>
               <FormLabel>Description</FormLabel>
               <Textarea {...register("description", { required: true })} />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>Class Time</FormLabel>
-              <Select
-                {...register("kind", { required: true })}
-                placeholder="Choose a minites"
-              >
-                <option value="20MINS">20MINS</option>
-                <option value="40MINS">40MINS</option>
-                <option value="60MINS">60MINS</option>
-              </Select>
-              <FormHelperText>
-                How long do you want to have class?
-              </FormHelperText>
             </FormControl>
 
             <FormControl>

@@ -22,6 +22,21 @@ export interface IOffline {
   photos: IPhoto[];
 }
 
+//challenge
+export interface IChallenge {
+  [x: string]: string;
+  pk: number;
+  name: string;
+  price: number;
+  description: string;
+  rating: number;
+  is_owner: boolean;
+  reviews_count: number;
+  photos: IPhoto[];
+  start: string;
+  end: string;
+}
+
 export interface IPhoto {
   pk: string;
   file: string;
@@ -83,6 +98,26 @@ export interface IOfflineDetail {
   // start: string;
   // end: string;
   subjects: ISubject[];
+}
+
+//challenge
+export interface IChallengeDetail {
+  id: number;
+  tutor: IUser;
+  level: ILevel[];
+  subjects: ISubject[];
+  rating: number;
+  is_owner: boolean;
+  reviews_count: number;
+  photos: IPhoto[];
+  created_at: string;
+  updated_at: string;
+  name: string;
+  price: number;
+  description: string;
+  kind: string;
+  start: string;
+  end: string;
 }
 
 export interface ISubject {

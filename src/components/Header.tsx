@@ -78,14 +78,6 @@ export default function Header() {
       }}
       borderBottomWidth={1}
     >
-      {/* <HStack spacing={2}>
-        <Box color={logoColor}>
-          <Link to={"/"}>
-            <FaWaze size={"48"} />
-          </Link>
-        </Box>
-      </HStack> */}
-
       <HStack spacing={2}>
         <Link to={"/"}>
           <Button>ONLINE</Button>
