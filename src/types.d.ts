@@ -75,8 +75,6 @@ export interface IOnlineDetail {
   price: number;
   description: string;
   kind: string;
-  // start: string;
-  // end: string;
   subjects: ISubject[];
 }
 
@@ -95,8 +93,6 @@ export interface IOfflineDetail {
   price: number;
   description: string;
   kind: string;
-  // start: string;
-  // end: string;
   subjects: ISubject[];
 }
 

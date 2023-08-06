@@ -126,6 +126,19 @@ export default function Header() {
                     <MenuItem>Upload online class</MenuItem>
                   </Link>
                 ) : null}
+
+                {user?.is_host ? (
+                  <Link to="/offlines/upload">
+                    <MenuItem>Upload offline class</MenuItem>
+                  </Link>
+                ) : null}
+
+                {user?.is_host ? (
+                  <Link to="/challenges/upload">
+                    <MenuItem>Upload challenge program</MenuItem>
+                  </Link>
+                ) : null}
+
                 <MenuItem onClick={onLogOut}>Log out</MenuItem>
               </MenuList>
             </Menu>

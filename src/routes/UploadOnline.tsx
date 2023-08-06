@@ -31,15 +31,6 @@ import { ILevel, IOnlineDetail, ISubject } from "../types";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-// interface IForm {
-//   name: string;
-//   price: number;
-//   description: string;
-//   kind: string;
-//   subjects: number[];
-//   level: number;
-// }
-
 export default function UploadOnline() {
   const { register, handleSubmit } = useForm<IUploadOnlineVariables>();
   const toast = useToast();
@@ -77,7 +68,7 @@ export default function UploadOnline() {
         }}
       >
         <Container>
-          <Heading textAlign={"center"}>Class Name</Heading>
+          <Heading textAlign={"center"}>New Online Class</Heading>
           <VStack
             spacing={10}
             as="form"

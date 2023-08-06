@@ -31,15 +31,6 @@ import { ILevel, IOfflineDetail, ISubject } from "../types";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-// interface IForm {
-//   name: string;
-//   price: number;
-//   description: string;
-//   kind: string;
-//   subjects: number[];
-//   level: number;
-// }
-
 export default function UploadOffline() {
   const { register, handleSubmit } = useForm<IUploadOfflineVariables>();
   const toast = useToast();
@@ -77,7 +68,7 @@ export default function UploadOffline() {
         }}
       >
         <Container>
-          <Heading textAlign={"center"}>Class Name</Heading>
+          <Heading textAlign={"center"}>New offline Class</Heading>
           <VStack
             spacing={10}
             as="form"
@@ -104,6 +95,11 @@ export default function UploadOffline() {
                   min={0}
                 />
               </InputGroup>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Address</FormLabel>
+              <Textarea {...register("address", { required: true })} />
             </FormControl>
 
             <FormControl>

@@ -184,6 +184,7 @@ export interface IUploadOfflineVariables {
   price: number;
   description: string;
   kind: string;
+  address: string;
   subjects: number[];
   level: number;
 }
@@ -194,8 +195,8 @@ export interface IUploadChallengeVariables {
   price: number;
   description: string;
   kind: string;
-  subjects: number[];
   level: number;
+  subjects: number[];
   start: String;
   end: String;
 }

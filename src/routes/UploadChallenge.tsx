@@ -68,7 +68,7 @@ export default function UploadChallenge() {
         }}
       >
         <Container>
-          <Heading textAlign={"center"}>Class Name</Heading>
+          <Heading textAlign={"center"}>New Challege Program</Heading>
           <VStack
             spacing={10}
             as="form"
@@ -76,13 +76,15 @@ export default function UploadChallenge() {
             mt={5}
           >
             <FormControl>
-              <FormLabel>Class Name</FormLabel>
+              <FormLabel>New Challenge Program Name</FormLabel>
               <Input
                 {...register("name", { required: true })}
                 required
                 type="text"
               />
-              <FormHelperText>Write the name of your class .</FormHelperText>
+              <FormHelperText>
+                Write the name of your challenge program .
+              </FormHelperText>
             </FormControl>
 
             <FormControl>
@@ -103,6 +105,21 @@ export default function UploadChallenge() {
             </FormControl>
 
             <FormControl>
+              <FormLabel>Challenge Program Kind</FormLabel>
+              <Select
+                {...register("kind", { required: true })}
+                placeholder="Choose a kind"
+              >
+                <option value="LVEC">LVEC</option>
+                <option value="UEEC">UEEC</option>
+                <option value="EDEC">EDEC</option>
+              </Select>
+              <FormHelperText>
+                What kind of challenge program do you want?
+              </FormHelperText>
+            </FormControl>
+
+            <FormControl>
               <FormLabel>Level</FormLabel>
               <Select
                 {...register("level", { required: true })}
@@ -114,7 +131,9 @@ export default function UploadChallenge() {
                   </option>
                 ))}
               </Select>
-              <FormHelperText>What level is your class?</FormHelperText>
+              <FormHelperText>
+                What level is your challenge program?
+              </FormHelperText>
             </FormControl>
 
             <FormControl>
@@ -133,6 +152,17 @@ export default function UploadChallenge() {
                 ))}
               </Grid>
             </FormControl>
+
+            <FormControl>
+              <FormLabel>Start Time</FormLabel>
+              <Textarea {...register("start", { required: true })} />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>End Time</FormLabel>
+              <Textarea {...register("end", { required: true })} />
+            </FormControl>
+
             {mutation.isError ? (
               <Text color="red.500">Something went wrong</Text>
             ) : null}
@@ -143,7 +173,7 @@ export default function UploadChallenge() {
               size="lg"
               w="100%"
             >
-              Upload Class
+              Upload Challenge
             </Button>
           </VStack>
         </Container>
