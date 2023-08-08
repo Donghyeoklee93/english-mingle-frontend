@@ -58,18 +58,14 @@ export default function Offline({
             <Text display={"block"} as="b" noOfLines={1} fontSize="md">
               {name}
             </Text>
-            <HStack spacing={1} alignItems="center">
-              <FaStar size={12} />
-              <Text fontSize={"sm"}>{rating}</Text>
+            <HStack spacing={1} justifyContent="flex-end">
+              <Text fontSize={"sm"}>${price}</Text>
             </HStack>
           </Grid>
-          <Text fontSize={"sm"} color={gray}>
+          <Text fontSize={"sm"} noOfLines={2} color="gray">
             {description}
           </Text>
         </Box>
-        <Text fontSize={"sm"} color={gray}>
-          <Text as="b">${price}</Text> / day
-        </Text>
       </VStack>
     </Link>
   );

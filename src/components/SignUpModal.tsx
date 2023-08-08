@@ -55,7 +55,7 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
     {
       onSuccess: () => {
         toast({
-          title: "어서오세요!",
+          title: "Welcome!",
           status: "success",
           position: "top",
         });

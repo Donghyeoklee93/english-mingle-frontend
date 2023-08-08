@@ -3,8 +3,10 @@ import {
   Button,
   Container,
   FormControl,
+  FormLabel,
   Heading,
   Input,
+  Textarea,
   VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
@@ -15,7 +17,7 @@ import { useMutation } from "@tanstack/react-query";
 import { getUploadURL } from "../api";
 
 interface IForm {
-  file: FileList;
+  uploadURL: string;
 }
 
 interface IUploadURLResponse {
@@ -48,7 +50,7 @@ export default function UploadChallengePhotos() {
         }}
       >
         <Container>
-          <Heading textAlign={"center"}>Upload a Photo</Heading>
+          <Heading textAlign={"center"}>Upload Photo URL</Heading>
           <VStack
             as="form"
             onSubmit={handleSubmit(onSubmit)}
@@ -56,10 +58,12 @@ export default function UploadChallengePhotos() {
             mt={10}
           >
             <FormControl>
-              <Input {...register("file")} type="file" accept="image/*" />
+              <FormLabel>Photo URL</FormLabel>
+              <Textarea {...register("uploadURL", { required: true })} />
             </FormControl>
-            <Button type="submit" w="full" colorScheme={"red"}>
-              Upload photos
+
+            <Button type="submit" w="50%" colorScheme={"twitter"}>
+              Upload photo
             </Button>
           </VStack>
         </Container>

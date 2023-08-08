@@ -62,25 +62,24 @@ export default function OfflineDetail() {
       <Helmet>
         <title>{data ? data.name : "Loading..."}</title>
       </Helmet>
-      <Skeleton height={"43px"} width="25%" isLoaded={!isLoading}>
-        <Heading>{data?.description}</Heading>
+      <Skeleton height={"43px"} width="100%" isLoaded={!isLoading}>
+        <Heading>{data?.name}</Heading>
       </Skeleton>
 
       <HStack width={"50%"} justifyContent={"space-between"} mt={10}>
         <VStack alignItems={"flex-start"}>
           <Skeleton isLoaded={!isLoading} height={"30px"}>
-            <Heading fontSize={"2xl"}>
-              House hosted by {data?.tutor.name}
-            </Heading>
+            <Heading fontSize={"2xl"}>Tutor : {data?.tutor.name}</Heading>
           </Skeleton>
           <Skeleton isLoaded={!isLoading} height={"30px"}>
             <HStack justifyContent={"flex-start"} w="100%">
-              <Text>{data?.name}</Text>
-              <Text>∙</Text>
-              <Text>{data?.kind}</Text>
+              <Text>{data?.level.kind}</Text>
               <Text>∙</Text>
               <Text>${data?.price} / per day</Text>
             </HStack>
+            <Text fontWeight="bold" color="blue.500">
+              {data?.subjects[0]?.name}
+            </Text>
           </Skeleton>
         </VStack>
         <Avatar name={data?.tutor.name} size={"xl"} src={data?.tutor.avatar} />
@@ -111,6 +110,15 @@ export default function OfflineDetail() {
         ))}
       </Grid>
 
+      <Box>
+        <Skeleton height={"43px"} width="25%" isLoaded={!isLoading}>
+          <Heading></Heading>
+        </Skeleton>
+        <Skeleton height={"40vh"} width="100%" isLoaded={!isLoading}>
+          <Text>{data?.description}</Text>
+        </Skeleton>
+      </Box>
+
       <Box
         bgColor={"purple.50"}
         mt={"50px"}
@@ -135,7 +143,7 @@ export default function OfflineDetail() {
         </VStack>
       </Box>
 
-      <Box height={"50vh"} bgColor={"blue.300"}>
+      <Box height={"80vh"} pt={10} border="5px dashed black">
         <Grid
           gap={10}
           templateColumns={"repeat(auto-fill, minmax(300px, 1fr))"}
@@ -179,6 +187,7 @@ export default function OfflineDetail() {
       </Box>
       <Box pt={10}>
         <Calendar
+          locale="en-US" // Set the calendar to English
           goToRangeStartOnSelect
           onChange={handleDateChange}
           // showDoubleView
@@ -199,7 +208,14 @@ export default function OfflineDetail() {
           Make booking
         </Button>
         {!isCheckingBooking && !checkBookingData?.ok ? (
-          <Text color="red.500">Can't book on those dates, sorry.</Text>
+          <Box
+            width={"100%"}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text color="red.500">Someone already booked</Text>
+          </Box>
         ) : null}
       </Box>
     </Box>

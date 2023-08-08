@@ -64,7 +64,7 @@ export interface ILevel {
 export interface IOnlineDetail {
   id: number;
   tutor: IUser;
-  level: ILevel[];
+  level: ILevel;
   rating: number;
   is_owner: boolean;
   reviews_count: number;
@@ -82,7 +82,7 @@ export interface IOnlineDetail {
 export interface IOfflineDetail {
   id: number;
   tutor: IUser;
-  level: ILevel[];
+  level: ILevel;
   rating: number;
   is_owner: boolean;
   reviews_count: number;
@@ -100,7 +100,7 @@ export interface IOfflineDetail {
 export interface IChallengeDetail {
   id: number;
   tutor: IUser;
-  level: ILevel[];
+  level: ILevel;
   subjects: ISubject[];
   rating: number;
   is_owner: boolean;

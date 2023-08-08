@@ -146,7 +146,7 @@ export default function Header() {
         ) : null}
 
         <Button rightIcon={<MdCall />} colorScheme="blue" variant="outline">
-          Call us
+          Request Us
         </Button>
 
         <IconButton
